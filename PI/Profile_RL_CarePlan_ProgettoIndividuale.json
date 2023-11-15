@@ -2,7 +2,7 @@
   "resourceType": "StructureDefinition",
   "id": "RLCarePlanProgettoIndividuale",
   "meta": {
-    "lastUpdated": "2023-03-08T15:37:49.9091983+00:00"
+    "lastUpdated": "2023-10-17T08:30:40.6508863+00:00"
   },
   "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLCarePlanProgettoIndividuale",
   "name": "RLCarePlanProgettoIndividuale",
@@ -25,7 +25,7 @@
       {
         "id": "CarePlan.id",
         "path": "CarePlan.id",
-        "short": "UUID prodotto dal server FHIR (applicativo) che detiente la risorsa",
+        "short": "UUID prodotto dal server FHIR (applicativo) che detiene la risorsa. Per maggiori informazioni su chi detiene la risorsa consultare il paragrafo API-Restful nella pagina di Contesto",
         "min": 1
       },
       {
@@ -58,16 +58,7 @@
       {
         "id": "CarePlan.extension",
         "path": "CarePlan.extension",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "url"
-            }
-          ],
-          "rules": "open"
-        },
-        "min": 0
+        "min": 1
       },
       {
         "id": "CarePlan.extension:versioneProgettoIndividuale",
@@ -186,7 +177,7 @@
         "id": "CarePlan.author",
         "path": "CarePlan.author",
         "short": "ASST che ha prodotto il progetto individuale",
-        "definition": "Reference al profilo RLOrganizationL1 inerente all'ASST produttrice del progetto individuale",
+        "definition": "Reference al profilo RLOrganizationL1 inerente all'ASST produttrice del progetto individuale. Deve essere inserito l'UUID generato dal server FHIR (applicativo) detentore della risorsa. Per tutte le informazioni sui server FHIR (applicativi) e le relative risorse detenute consultare la pagina API RESTful della sezione Contesto di questa Implementation Guide",
         "comment": "Il dato è detenuto dal SGDT",
         "min": 1,
         "type": [
@@ -204,7 +195,6 @@
         "short": "Case manager del progetto individuale. La figura del case manager può essere identificata in un professionista santatirio o in un equipe di professionisti sanitari.",
         "definition": "- Reference al profilo RLPractitionerRoleProfessionistaSanitario nel caso in cui il case manager sia un professionista sanitario. \r\n- Reference al profilo RLCareTeamEquipe nel caso in cui il case manager sia un equipe di professionisti sanitari.",
         "comment": "Il dato è detenuto dal SGDT",
-        "min": 1,
         "max": "1",
         "type": [
           {
@@ -219,14 +209,14 @@
       {
         "id": "CarePlan.addresses",
         "path": "CarePlan.addresses",
-        "short": "Patologia primaria, patologie secondarie e patologia ulteriore",
-        "definition": "Reference ai profili RLConditionPatologiaPrimariaSecondariaUlteriore inerenti alle patologie pregresse e le condizioni di salute del paziente",
+        "short": "Problemi di salute del paziente",
+        "definition": "Reference al profilo RLConditionProblemiSalute contenente i dettagli dei problemi di salute del paziente (condizione clinica, patologie, ecc.)",
         "comment": "Il dato è detenuto dal SGDT",
         "type": [
           {
             "code": "Reference",
             "targetProfile": [
-              "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLConditionPatologiaPrimariaSecondariaUlteriore"
+              "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLConditionProblemiSalute"
             ]
           }
         ]

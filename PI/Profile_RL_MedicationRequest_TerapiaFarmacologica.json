@@ -2,7 +2,7 @@
   "resourceType": "StructureDefinition",
   "id": "RLMedicationRequestTerapiaFarmacologica",
   "meta": {
-    "lastUpdated": "2023-03-08T14:22:54.9437705+00:00"
+    "lastUpdated": "2023-10-26T09:01:39.7556093+00:00"
   },
   "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLMedicationRequestTerapiaFarmacologica",
   "name": "RLMedicationRequestTerapiaFarmacologica",
@@ -25,7 +25,7 @@
       {
         "id": "MedicationRequest.id",
         "path": "MedicationRequest.id",
-        "short": "UUID prodotto dal server FHIR (applicativo) che detiente la risorsa",
+        "short": "UUID prodotto dal server FHIR (applicativo) che detiene la risorsa. Per maggiori informazioni su chi detiene la risorsa consultare il paragrafo API-Restful nella pagina di Contesto.",
         "min": 1
       },
       {
@@ -56,25 +56,10 @@
         "fixedCanonical": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLMedicationRequestTerapiaFarmacologica"
       },
       {
-        "id": "MedicationRequest.extension",
-        "path": "MedicationRequest.extension",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "url"
-            }
-          ],
-          "rules": "open"
-        },
-        "min": 0
-      },
-      {
         "id": "MedicationRequest.extension:consegnaAlPaziente",
         "path": "MedicationRequest.extension",
         "sliceName": "consegnaAlPaziente",
         "short": "Flag riguardo la consegna a domicilio del farmaco al paziente",
-        "min": 0,
         "max": "1",
         "type": [
           {
@@ -114,89 +99,22 @@
       {
         "id": "MedicationRequest.medication[x].coding",
         "path": "MedicationRequest.medication[x].coding",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "system"
-            }
-          ],
-          "rules": "open"
-        },
         "min": 1,
         "max": "1"
       },
       {
-        "id": "MedicationRequest.medication[x].coding:ATC",
-        "path": "MedicationRequest.medication[x].coding",
-        "sliceName": "ATC",
-        "short": "Codice e descrizione del farmaco per ATC",
-        "max": "1"
+        "id": "MedicationRequest.medication[x].coding.system",
+        "path": "MedicationRequest.medication[x].coding.system",
+        "min": 1,
+        "fixedUri": "https://fhir.siss.regione.lombardia.it/ValueSet/DDC-Farmaco"
       },
       {
-        "id": "MedicationRequest.medication[x].coding:ATC.code",
+        "id": "MedicationRequest.medication[x].coding.code",
         "path": "MedicationRequest.medication[x].coding.code",
-        "short": "Codifica del farmaco",
-        "min": 1,
         "binding": {
           "strength": "required",
-          "description": "ValueSet che identifica l'anagrafica dei farmaci secondo la codifica ministeriale ATC",
-          "valueSet": "https://fhir.siss.regione.lombardia.it/ValueSet/DDC-FarmacoATC"
+          "valueSet": "https://fhir.siss.regione.lombardia.it/ValueSet/DDC-Farmaco"
         }
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:ATC.display",
-        "path": "MedicationRequest.medication[x].coding.display",
-        "short": "Descrizione codifica del farmaco",
-        "min": 1
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:AIC",
-        "path": "MedicationRequest.medication[x].coding",
-        "sliceName": "AIC",
-        "short": "Codice e descrizione del farmaco per AIC",
-        "max": "1"
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:AIC.code",
-        "path": "MedicationRequest.medication[x].coding.code",
-        "short": "Codifica del farmaco",
-        "min": 1,
-        "binding": {
-          "strength": "required",
-          "description": "ValueSet che identifica l'anagrafica dei farmaci secondo la codifica ministeriale AIC",
-          "valueSet": "https://fhir.siss.regione.lombardia.it/ValueSet/DDC-FarmacoAIC"
-        }
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:AIC.display",
-        "path": "MedicationRequest.medication[x].coding.display",
-        "short": "Descrizione codifica del farmaco",
-        "min": 1
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:GE",
-        "path": "MedicationRequest.medication[x].coding",
-        "sliceName": "GE",
-        "short": "Codice e descrizione del farmaco per GE",
-        "max": "1"
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:GE.code",
-        "path": "MedicationRequest.medication[x].coding.code",
-        "short": "Codifica del farmaco",
-        "min": 1,
-        "binding": {
-          "strength": "required",
-          "description": "ValueSet che identifica l'anagrafica dei farmaci secondo la codifica ministeriale GE",
-          "valueSet": "https://fhir.siss.regione.lombardia.it/ValueSet/DDC-FarmacoGE"
-        }
-      },
-      {
-        "id": "MedicationRequest.medication[x].coding:GE.display",
-        "path": "MedicationRequest.medication[x].coding.display",
-        "short": "Descrizione codifica del farmaco",
-        "min": 1
       },
       {
         "id": "MedicationRequest.subject",
@@ -217,7 +135,7 @@
         "id": "MedicationRequest.basedOn",
         "path": "MedicationRequest.basedOn",
         "short": "Riferimento al progetto individuale nel quale è prevista l'erogazione della terapia",
-        "definition": "Reference al profilo RLCarePlanProgettoIndividuale contente il progetto individuale del paziente",
+        "definition": "Reference al profilo RLCarePlanProgettoIndividuale contente il progetto individuale del paziente. Deve essere inserito l'UUID generato dal server FHIR (applicativo) detentore della risorsa. Per tutte le informazioni sui server FHIR (applicativi) e le relative risorse detenute consultare la pagina API RESTful della sezione Contesto di questa Implementation Guide",
         "comment": "Il dato è detenuto dal SGDT",
         "min": 1,
         "max": "1",
@@ -302,13 +220,6 @@
         "path": "MedicationRequest.dosageInstruction.timing.repeat.periodUnit",
         "short": "Unità temporale di assunzione",
         "definition": "Valori definiti dallo standard FHIR:\r\n- s: secondo \r\n- min: minuto \r\n- h: ora\r\n- d: giorno\r\n- wk: settimana\r\n- mo: mese\r\n- a: anno",
-        "comment": "Il dato è detenuto dal SGDT",
-        "min": 1
-      },
-      {
-        "id": "MedicationRequest.dosageInstruction.route",
-        "path": "MedicationRequest.dosageInstruction.route",
-        "short": "Via di sommistrazione del farmaco",
         "comment": "Il dato è detenuto dal SGDT",
         "min": 1
       },
