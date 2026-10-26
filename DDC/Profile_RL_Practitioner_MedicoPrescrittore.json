@@ -2,7 +2,7 @@
   "resourceType": "StructureDefinition",
   "id": "RLPractitionerMedicoPrescrittore",
   "meta": {
-    "lastUpdated": "2023-03-08T15:39:56.3214995+00:00"
+    "lastUpdated": "2023-10-17T08:21:02.8309891+00:00"
   },
   "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPractitionerMedicoPrescrittore",
   "name": "RLPractitionerMedicoPrescrittore",
@@ -31,7 +31,7 @@
       {
         "id": "Practitioner.id",
         "path": "Practitioner.id",
-        "short": "UUID prodotto dal server FHIR (applicativo) che detiente la risorsa",
+        "short": "UUID prodotto dal server FHIR (applicativo) che detiene la risorsa. Per maggiori informazioni su chi detiene la risorsa consultare il paragrafo API-Restful nella pagina di Contesto.",
         "min": 1
       },
       {
@@ -61,27 +61,12 @@
         "max": "1"
       },
       {
-        "id": "Practitioner.extension",
-        "path": "Practitioner.extension",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "url"
-            }
-          ],
-          "rules": "open"
-        },
-        "min": 0
-      },
-      {
         "id": "Practitioner.extension:dataUpdate",
         "path": "Practitioner.extension",
         "sliceName": "dataUpdate",
         "short": "Data dell'ultima modifica del record",
         "definition": "Formato: YYYY-MM-DD secondo lo standard FHIR",
         "comment": "La fonte del dato è il campo DT_ULTV dell'anagrafe dei medici prescrittori i cui dettagli sono consultabili nel documento DC-DDC-SIAA#02 ed accessibili tramite i servizi descritti nel documento DC-DDC-SIAA#01",
-        "min": 0,
         "max": "1",
         "type": [
           {
@@ -100,7 +85,6 @@
         "short": "Data di inserimento del record",
         "definition": "Formato: YYYY-MM-DD secondo lo standard FHIR",
         "comment": "La fonte del dato è il campo DT_INSER dell'anagrafe dei medici prescrittori i cui dettagli sono consultabili nel documento DC-DDC-SIAA#02 ed accessibili tramite i servizi descritti nel documento DC-DDC-SIAA#01",
-        "min": 0,
         "max": "1",
         "type": [
           {
@@ -157,6 +141,64 @@
         "min": 1
       },
       {
+        "id": "Practitioner.telecom",
+        "path": "Practitioner.telecom",
+        "short": "Contatto telefonico del medico prescrittore",
+        "definition": "Stringa alfanumerica di massimo 40 caratteri",
+        "comment": "Il dato è detenuto da SGDT",
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.telecom.system",
+        "path": "Practitioner.telecom.system",
+        "fixedCode": "phone"
+      },
+      {
+        "id": "Practitioner.telecom.value",
+        "path": "Practitioner.telecom.value",
+        "short": "Contatto telefonico del medico prescrittore",
+        "definition": "Stringa alfanumerica di massimo 40 caratteri",
+        "comment": "Il dato è detenuto da SGDT"
+      },
+      {
+        "id": "Practitioner.address",
+        "path": "Practitioner.address",
+        "short": "Indirizzo dell'ambulatorio del medico prescrittore",
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.address.use",
+        "path": "Practitioner.address.use",
+        "definition": "valore fisso su \"work\"",
+        "min": 1,
+        "fixedCode": "work"
+      },
+      {
+        "id": "Practitioner.address.line",
+        "path": "Practitioner.address.line",
+        "short": "Indirizzo dell'ambulatorio",
+        "definition": "Stringa alfanumerica di al più 100 caratteri",
+        "comment": "Il dato è detenuto da SGDT",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Practitioner.address.city",
+        "path": "Practitioner.address.city",
+        "short": "Comune in cui l'ambulatorio del medico ha sede",
+        "definition": "Stringa alfabedica di massimo 50 caratteri",
+        "comment": "Il dato è detenuto da SGDT",
+        "min": 1
+      },
+      {
+        "id": "Practitioner.address.postalCode",
+        "path": "Practitioner.address.postalCode",
+        "short": "CAP del comune in cui l'ambulatorio del medico ha sede",
+        "definition": "Stringa numerica di 5 cifre",
+        "comment": "Il dato è detenuto da SGDT",
+        "min": 1
+      },
+      {
         "id": "Practitioner.qualification",
         "path": "Practitioner.qualification",
         "min": 1,
@@ -198,6 +240,7 @@
         "id": "Practitioner.qualification.issuer",
         "path": "Practitioner.qualification.issuer",
         "short": "Reference all'ente L1 in cui il medico prescrittore lavora",
+        "definition": "Reference alla risorsa RLOrganizationL1. Deve essere inserito l'UUID generato dal server FHIR (applicativo) detentore della risorsa. Per tutte le informazioni sui server FHIR (applicativi) e le relative risorse detenute consultare la pagina API RESTful della sezione Contesto di questa Implementation Guide",
         "comment": "La fonte del dato è il campo CD_STRUTTURA dell'anagrafe dei medici prescrittori i cui dettagli sono consultabili nel documento DC-DDC-SIAA#02 ed accessibili tramite i servizi descritti nel documento DC-DDC-SIAA#01",
         "type": [
           {

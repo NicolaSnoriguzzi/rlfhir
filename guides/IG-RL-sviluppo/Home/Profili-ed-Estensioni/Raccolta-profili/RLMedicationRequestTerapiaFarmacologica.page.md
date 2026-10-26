@@ -55,7 +55,9 @@ Di seguito è presentato il contenuto del profilo in diversi formati. La corrisp
 
 <div id="Esempi" class="tabcontent">
   <h3>Esempi</h3>
-{{link:esempio-MedicationRequest-TerapiaFarmacologica}}
+C-DOM: {{link:esempio-medicationRequest-TerapiaFarmacologica}}
+<br>
+PIC: {{link:esempio-medicationRequest-TerapiaFarmacologica-PIC}}
 <br>
 </div>
 
@@ -79,4 +81,6 @@ Nella seguente tabella sono elencati i value set relativi al profilo RLMedicatio
 
 | Nome | Descrizione | Riferimento al dettaglio della codifica |
 |---|---|---|
-| medicationCodeableConcept | Codice e descrizione del farmaco per ATC o AIC oppure per GE |  *Codifica in fase di definizione|
+| ATC | Codice e descrizione del farmaco per ATC |La codifica è definita dal ValueSet https://fhir.siss.regione.lombardia.it/CodeSystem/DDC-FarmacoATC |
+| AIC | Codice e descrizione del farmaco per AIC |La codifica è definita dal ValueSet https://fhir.siss.regione.lombardia.it/CodeSystem/DDC-FarmacoAIC |
+| GE | Codice e descrizione del farmaco per GE |La codifica è definita dal ValueSet https://fhir.siss.regione.lombardia.it/CodeSystem/DDC-FarmacoGE |

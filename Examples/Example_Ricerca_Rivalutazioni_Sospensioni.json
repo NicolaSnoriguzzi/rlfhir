@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "esempio-ricerca-rivalutazioni-sospensioni",
   "type": "searchset",
-  "timestamp": "2023-01-01T10:36:03Z",
+  "timestamp": "2023-06-25T10:36:03Z",
   "total": 2,
   "entry": [
     {
@@ -11,7 +11,7 @@
         "resourceType": "ServiceRequest",
         "id": "a07c4faa-98a7-11ed-a8fc-0242ac120002",
         "meta": {
-          "lastUpdated": "2023-01-01T10:36:03Z",
+          "lastUpdated": "2023-06-25T10:36:03Z",
           "profile": [
             "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLServiceRequestRivalutazione"
           ],
@@ -19,6 +19,7 @@
         },
         "identifier": [
           {
+            "system": "https://fhir.siss.regione.lombardia.it/sid/identificativoRichiestaRivalutazionePaziente",
             "value": "0300780000001_R000001"
           }
         ],
@@ -29,15 +30,20 @@
           }
         ],
         "requisition": {
-          "value": "1234567890"
+          "value": "2023900018"
         },
         "status": "active",
         "intent": "proposal",
         "subject": {
           "reference": "Patient/b7807e00-9745-11ed-a8fc-0242ac120002",
-          "display": "Mario Rossi"
+          "display": "CITTADINO SEI"
         },
-        "occurrenceDateTime": "2022-02-02"
+        "occurrenceDateTime": "2022-02-02",
+        "note": [
+          {
+            "text": "Condizioni di salute peggiorate"
+          }
+        ]
       },
       "search": {
         "mode": "match"
@@ -57,6 +63,7 @@
         },
         "identifier": [
           {
+            "system": "https://fhir.siss.regione.lombardia.it/sid/identificativoSospensioneTemporanea",
             "value": "0300780000001_S000002"
           }
         ],
@@ -67,13 +74,13 @@
           }
         ],
         "requisition": {
-          "value": "1234567890"
+          "value": "2023900018"
         },
         "status": "on-hold",
         "intent": "directive",
         "subject": {
           "reference": "Patient/b7807e00-9745-11ed-a8fc-0242ac120002",
-          "display": "Mario Rossi"
+          "display": "CITTADINO SEI"
         },
         "occurrencePeriod": {
           "start": "2022-01-01",
@@ -109,14 +116,15 @@
         },
         "identifier": [
           {
-            "value": "PI-2023000000001"
+            "system": "https://fhir.siss.regione.lombardia.it/sid/identificativoUnivocoPI",
+            "value": "PI-202390000002"
           }
         ],
         "status": "active",
         "intent": "order",
         "subject": {
           "reference": "Patient/b7807e00-9745-11ed-a8fc-0242ac120002",
-          "display": "Mario Rossi"
+          "display": "CITTADINO SEI"
         },
         "encounter": {
           "reference": "Encounter/c559333c-974f-11ed-a8fc-0242ac120002",
@@ -128,7 +136,7 @@
         "created": "2023-01-11T08:32:56.239+01:00",
         "author": {
           "reference": "Organization/c8f77b34-974f-11ed-a8fc-0242ac120002",
-          "display": "ASST DELLA BRIANZA"
+          "display": "ASST SACCO"
         },
         "contributor": [
           {
@@ -143,7 +151,7 @@
           },
           {
             "reference": "Condition/e028bc4c-b134-11ed-afa1-0242ac120002",
-            "display": "Patologia Secondara"
+            "display": "Patologia Secondaria"
           }
         ],
         "supportingInfo": [
@@ -161,13 +169,13 @@
         "activity": [
           {
             "reference": {
-              "reference": "MedicationRequest/088c489c-9750-11ed-a8fc-0242ac120002",
-              "display": "Terapia farmacologica"
+              "reference": "ServiceRequest/d99a530e-f43a-4c1f-ade8-89dd43ec5dd5-1",
+              "display": "Servizi Socio Assistenziali"
             }
           },
           {
             "reference": {
-              "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+              "reference": "ServiceRequest/d99a530e-f43a-4c1f-ade8-89dd43ec5dd5-2",
               "display": "Servizi Socio Assistenziali"
             }
           }
@@ -203,24 +211,34 @@
         "identifier": [
           {
             "system": "http://hl7.it/sid/codiceFiscale",
-            "value": "RSSMRA80A01F205X"
+            "value": "CTTSEI82A01G188Y"
           }
         ],
         "active": true,
         "name": [
           {
-            "family": "Rossi",
+            "family": "CITTADINO",
             "given": [
-              "Mario"
+              "SEI"
             ]
           }
         ],
         "gender": "male",
-        "birthDate": "1980-01-01",
+        "birthDate": "1981-01-01",
         "address": [
           {
             "use": "billing",
-            "city": "015146"
+            "city": "015146",
+            "country": "100"
+          },
+          {
+            "use": "home",
+            "line": [
+              "Via Adda 7 - Scala B - Piano 3 - Interno A"
+            ],
+            "city": "015146",
+            "postalCode": "20124",
+            "country": "100"
           }
         ],
         "maritalStatus": {
@@ -241,7 +259,7 @@
         "extension": [
           {
             "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientCittadinanza",
-            "valueCode": "ITA"
+            "valueCode": "100"
           },
           {
             "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientTitoloDiStudio",
@@ -282,22 +300,6 @@
           {
             "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientLuogoDiNascita",
             "valueCode": "015146"
-          },
-          {
-            "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientATSResidenza",
-            "valueCode": "030321"
-          },
-          {
-            "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientTipologiaCittadino",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SIAD-TipologiaPaziente",
-                  "code": "1",
-                  "display": "Paziente ordinario: utenza tipica"
-                }
-              ]
-            }
           }
         ]
       },

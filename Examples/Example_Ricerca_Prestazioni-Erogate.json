@@ -19,7 +19,7 @@
         },
         "basedOn": [
           {
-            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-2",
             "display": "2023000021"
           },
           {
@@ -41,8 +41,8 @@
           "coding": [
             {
               "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SGDT-TipologiaPrestazione",
-              "code": "PRESTADI02",
-              "display": "Visita Domiciliare"
+              "code": "PRESTADI04",
+              "display": "Trasferimento competenze/educazione del caregiver/ colloqui/ nursing/addestramento"
             }
           ]
         },
@@ -55,7 +55,7 @@
           {
             "actor": {
               "reference": "PractitionerRole/a6ec490e-98a1-11ed-a8fc-0242ac990002",
-              "display": "MMG"
+              "display": "Fisioterapista"
             }
           }
         ],
@@ -116,7 +116,7 @@
         },
         "basedOn": [
           {
-            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-1",
             "display": "2023000021"
           },
           {
@@ -213,7 +213,7 @@
         },
         "basedOn": [
           {
-            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-1",
             "display": "2023000021"
           },
           {
@@ -310,7 +310,7 @@
         },
         "basedOn": [
           {
-            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-2",
             "display": "2023000021"
           },
           {
@@ -407,7 +407,7 @@
         },
         "basedOn": [
           {
-            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+            "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-2",
             "display": "2023000021"
           },
           {
@@ -491,10 +491,10 @@
       }
     },
     {
-      "fullUrl": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+      "fullUrl": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-1",
       "resource": {
         "resourceType": "ServiceRequest",
-        "id": "14aec1c2-9750-11ed-a8fc-0242ac120002",
+        "id": "14aec1c2-9750-11ed-a8fc-0242ac120002-1",
         "meta": {
           "lastUpdated": "2023-01-15T18:36:03Z",
           "profile": [
@@ -526,7 +526,94 @@
           ]
         },
         "quantityQuantity": {
-          "value": 18
+          "value": 12
+        },
+        "subject": {
+          "reference": "Patient/b7807e00-9745-11ed-a8fc-0242ac120002",
+          "display": "Mario Rossi"
+        },
+        "occurrencePeriod": {
+          "start": "2023-02-01T10:17:16+01:00",
+          "end": "2023-03-15T10:17:16+01:00"
+        },
+        "performer": [
+          {
+            "reference": "Organization/56a3e16e-97e3-11ed-a8fc-0242ac120002",
+            "display": "FONDAZIONE MADDALENA GRASSI"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SGDT-PercorsiCDom",
+                "code": "PERCDOM01",
+                "display": "Prelievo"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Presa in carico confermata dall'ente"
+          }
+        ],
+        "extension": [
+          {
+            "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLServiceRequestSoggettoProponentePIC",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SIAD-ProponentePIC",
+                  "code": "2",
+                  "display": "MMG / PLS"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "search": {
+        "mode": "include"
+      }
+    },
+    {
+      "fullUrl": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-2",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "14aec1c2-9750-11ed-a8fc-0242ac120002-2",
+        "meta": {
+          "lastUpdated": "2023-01-15T18:36:03Z",
+          "profile": [
+            "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLServiceRequestServiziSocioAssistenziali"
+          ],
+          "versionId": "1"
+        },
+        "identifier": [
+          {
+            "system": "https://fhir.siss.regione.lombardia.it/sid/codiceIdentificativoServizioSocioAssistenziale",
+            "value": "2023000021"
+          }
+        ],
+        "basedOn": [
+          {
+            "reference": "CarePlan/365db2ec-973c-11ed-a8fc-0242ac120002",
+            "display": "PI-2023000000001"
+          }
+        ],
+        "status": "active",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "https://fhir.siss.regione.lombardia.it/ValueSet/DDC-DescL2",
+              "code": "C-DOM",
+              "display": "CURE DOMICILIARI"
+            }
+          ]
+        },
+        "quantityQuantity": {
+          "value": 8
         },
         "subject": {
           "reference": "Patient/b7807e00-9745-11ed-a8fc-0242ac120002",
@@ -548,7 +635,7 @@
               {
                 "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SGDT-PercorsiCDom",
                 "code": "PERCDOM02",
-                "display": "Cure Domiciliari Base - Prestazionale Generico"
+                "display": "Prestazionale Generico"
               }
             ]
           }
@@ -650,7 +737,13 @@
           },
           {
             "reference": {
-              "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002",
+              "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-1",
+              "display": "Servizi Socio Assistenziali"
+            }
+          },
+          {
+            "reference": {
+              "reference": "ServiceRequest/14aec1c2-9750-11ed-a8fc-0242ac120002-2",
               "display": "Servizi Socio Assistenziali"
             }
           }
@@ -703,7 +796,17 @@
         "address": [
           {
             "use": "billing",
-            "city": "015146"
+            "city": "015146",
+            "country": "100"
+          },
+          {
+            "use": "home",
+            "line": [
+              "Via Adda 7 - Scala B - Piano 3 - Interno A"
+            ],
+            "city": "015146",
+            "postalCode": "20124",
+            "country": "100"
           }
         ],
         "maritalStatus": {
@@ -769,18 +872,6 @@
           {
             "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientATSResidenza",
             "valueCode": "030324"
-          },
-          {
-            "url": "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLPatientTipologiaCittadino",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SIAD-TipologiaPaziente",
-                  "code": "1",
-                  "display": "Paziente ordinario: utenza tipica"
-                }
-              ]
-            }
           }
         ]
       },
@@ -831,8 +922,8 @@
             "coding": [
               {
                 "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SIAD-TipoOperatore",
-                "code": "1",
-                "display": "MMG"
+                "code": "8",
+                "display": "Fisioterapista"
               }
             ]
           }

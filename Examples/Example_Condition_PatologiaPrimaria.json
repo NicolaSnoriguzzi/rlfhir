@@ -4,7 +4,7 @@
   "meta": {
     "lastUpdated": "2023-01-11T08:32:56+01:00",
     "profile": [
-      "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLConditionPatologiaPrimariaSecondariaUlteriore"
+      "https://fhir.siss.regione.lombardia.it/StructureDefinition/RLConditionProblemiSalute"
     ],
     "versionId": "1"
   },
@@ -12,7 +12,7 @@
     {
       "coding": [
         {
-          "system": "https://fhir.siss.regione.lombardia.it/ValueSet/SGDT-TipologiaPatologia",
+          "system": "https://fhir.siss.regione.lombardia.it/ValueSet/TipologiaProblemaSalute",
           "code": "1",
           "display": "Patologia primaria"
         }

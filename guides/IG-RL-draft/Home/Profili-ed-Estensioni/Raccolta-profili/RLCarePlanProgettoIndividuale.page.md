@@ -85,14 +85,14 @@ Nella tabella di seguito vengono riportati i dettagli tecnici per l’implementa
 |     SCOPE    | Progetti individuali attivi |
 |---|---|
 | VERB | GET |
-| BASE_APIMANAGER | https://api.servizirl.it/c/operatori.siss/fhir/v1.0.0/npri |
-| URL | CarePlan?_profile=https://fhir.siss.regione.lombardia.it/StructureDefinition/RLCarePlanProgettoIndividuale<br>&activity-reference:ServiceRequest.code=C-DOM<br>&author:Organization.identifier=\{_codiceLivelloL1_\}<br>&_lastUpdated=gt\{_dataLimiteIntervalloInferiore_\}<br>&_lastUpdated=lt\{_dataLimiteIntervalloSuperiore_\}<br>&status=active<br>&_include=* |
+| BASE_URL | https://api.servizirl.it/c/operatori.siss/fhir/v1.0.0/npri |
+| PARAMETRI | CarePlan?_profile=https://fhir.siss.regione.lombardia.it/StructureDefinition/RLCarePlanProgettoIndividuale<br>&activity-reference:ServiceRequest.code=C-DOM<br>&author:Organization.identifier={codiceLivelloL1}<br>&_lastUpdated=gt{dataLimiteIntervalloInferiore}<br>&_lastUpdated=lt{dataLimiteIntervalloSuperiore}<br>&status=active<br>&_include=* |
 
-A titolo esemplificativo, la chiamata: 
+Esempio chiamata:
 
-    http://localhost:52773/nprifhirgtw/api/v1/fhir/r4/operatori-siss-fhir-service-v1/CarePlan?_profile=https://fhir.siss.regione.lombardia.it/StructureDefinition/RLCarePlanProgettoIndividuale&activity-reference:ServiceRequest.code=C-DOM&author:Organization.identifier=030701&_lastUpdated=gt2022-11-18T16:00:00+00:00&_lastUpdated=lt2022-11-30T16:00:00+00:00&status=active&_include=*
+  https://api.servizirl.it/c/operatori.siss/nea/v1.0.0/npri/CarePlan?_profile=https://fhir.siss.regione.lombardia.it/StructureDefinition/RLCarePlanProgettoIndividuale&activity-reference:ServiceRequest.code=C-DOM&author:Organization.identifier=030701&_lastUpdated=gt2022-11-18&_lastUpdated=lt2022-11-30&status=active&_include=*
 
-Restituirà tutti i Progetti Individuali attivi contenenti esclusivamente i dettagli del ricovero domiciliare in carico all’ente con codice livello 1 "030701" e creati e/o modificati tra le 16:00 del giorno 18-11-2022 e le 16:00 del giorno 30-11-2022. Il risultato della ricerca conterrà anche tutte le informazioni associate referenziate nel profilo.
+Restituirà tutti i Progetti Individuali attivi contenenti esclusivamente i dettagli del ricovero domiciliare in carico all’ente con codice livello 1 "030701" e creati e/o modificati tra il giorno 18-11-2022 e il giorno 30-11-2022. Il risultato della ricerca conterrà anche tutte le informazioni associate referenziate nel profilo.
 
 Un esempio di Bundle di risposta può essere consultato qui: {{link:esempio-ricerca-pi-attivi}}.
 
@@ -107,7 +107,6 @@ Questa ricerca deve essere effettuata dagli Enti Erogatori di servizi socioassis
 L’elenco dei progetti individuali conterrà solo ed esclusivamente i dettagli dell’attivazione di un servizio socioassistenziale affidato all’Ente Erogatore chiamante. In virtù di ciò, lo scopo della ricerca è quello di consentire all’Ente Erogatore il confronto tra le versioni del progetto individuale precedentemente salvate e quelle restituite dalla ricerca.
 
 I parametri da valorizzare obbligatoriamente per effettuare la ricerca sono:
--	activity.reference(RLServiceRequestServiziSocioAssistenziali).code coding.code: codice del servizio sociosanitario d’interesse
 -	activity.reference(RLServiceRequestServiziSocioAssistenziali).identifier: codice identificativo del servizio sociosanitario attivato/da attivare all’assistito
 -	subject.reference(RLPatientCittadino).identifier: codice fiscale dell’assistito
 

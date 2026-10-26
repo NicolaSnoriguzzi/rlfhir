@@ -10,6 +10,7 @@
   },
   "identifier": [
     {
+      "system": "https://fhir.siss.regione.lombardia.it/sid/identificativoRichiestaRivalutazionePaziente",
       "value": "0300780000001_R000001"
     }
   ],
@@ -28,5 +29,10 @@
     "reference": "Patient/b7807e00-9745-11ed-a8fc-0242ac120002",
     "display": "Mario Rossi"
   },
-  "occurrenceDateTime": "2022-02-02"
+  "occurrenceDateTime": "2022-02-02",
+  "note": [
+    {
+      "text": "Motivo della rivalutazione"
+    }
+  ]
 }
